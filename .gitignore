@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# SvelteKit output
+/sites/*/.svelte-kit/
+/sites/*/build/
+
+# Env
+.env
+.env.*
+!.env.example
+
+# Vite
+vite.config.ts.timestamp-*
+
+# OS
+.DS_Store

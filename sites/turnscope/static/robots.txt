@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://turnscope.app/sitemap.xml

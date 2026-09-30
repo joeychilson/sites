@@ -1,0 +1,143 @@
+@import 'tailwindcss';
+
+/*
+ * The app's look (macos/Turnscope/Style.swift in the Turnscope repo): the
+ * system's own grays, until something needs you. Amber for a limit that runs
+ * out before it resets at this pace, red for one used up. The page keeps to
+ * that, so the only color on it is a limit in trouble. Each color has its
+ * light and dark value, and the page follows the system appearance, as the
+ * app does.
+ */
+@theme {
+  --color-*: initial;
+  --color-ink: light-dark(#1d1d1f, #f5f5f7);
+  --color-ink-2: light-dark(rgb(29 29 31 / 0.62), rgb(245 245 247 / 0.6));
+  --color-ink-3: light-dark(rgb(29 29 31 / 0.44), rgb(245 245 247 / 0.4));
+  --color-ink-4: light-dark(rgb(29 29 31 / 0.2), rgb(245 245 247 / 0.18));
+  --color-page: light-dark(#f4f4f2, #141415);
+  --color-panel: light-dark(#ffffff, #262628);
+  --color-bar: light-dark(rgb(250 250 249 / 0.78), rgb(38 38 40 / 0.72));
+  --color-fill: light-dark(rgb(29 29 31 / 0.055), rgb(245 245 247 / 0.07));
+  --color-hover: light-dark(rgb(29 29 31 / 0.08), rgb(245 245 247 / 0.1));
+  --color-edge: light-dark(rgb(29 29 31 / 0.1), rgb(245 245 247 / 0.12));
+  --color-track: light-dark(rgb(29 29 31 / 0.1), rgb(245 245 247 / 0.12));
+  --color-level: light-dark(rgb(29 29 31 / 0.26), rgb(245 245 247 / 0.3));
+  --color-level-2: light-dark(rgb(29 29 31 / 0.6), rgb(245 245 247 / 0.62));
+  --color-thumb: light-dark(#ffffff, #48484b);
+  --color-raised: light-dark(#ececea, #3a3a3d);
+  --color-prominent: light-dark(#1d1d1f, #f5f5f7);
+  --color-on-prominent: light-dark(#ffffff, #1d1d1f);
+  /* The app's own amber and red, as its panel and menu bar draw them. */
+  --color-amber: #ed9419;
+  --color-red: #eb4238;
+  /* The amber, deep enough to read as text on the page. */
+  --color-amber-ink: light-dark(#b36800, #f5a531);
+  --color-focus: light-dark(#0a64d6, #4c9bff);
+
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, 'Segoe UI', Roboto,
+    'Helvetica Neue', sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
+
+  --radius-row: 12px;
+  --radius-panel: 14px;
+  --radius-note: 20px;
+  --radius-tile: 22px;
+
+  --shadow-panel:
+    0 0 0 0.5px var(--color-edge), 0 8px 36px light-dark(rgb(0 0 0 / 0.14), rgb(0 0 0 / 0.5));
+  --shadow-note:
+    0 0 0 0.5px var(--color-edge), 0 4px 18px light-dark(rgb(0 0 0 / 0.07), rgb(0 0 0 / 0.35));
+  --shadow-thumb:
+    0 0 0 0.5px var(--color-edge), 0 1px 3px light-dark(rgb(0 0 0 / 0.1), rgb(0 0 0 / 0.4));
+
+  --ease-spring: cubic-bezier(0.2, 0.9, 0.25, 1);
+}
+
+:root {
+  color-scheme: light dark;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-page);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--color-focus) 22%, transparent);
+}
+
+:focus-visible {
+  outline: 3px solid color-mix(in oklab, var(--color-focus) 70%, transparent);
+  outline-offset: 2px;
+}
+
+/* The page's column. */
+@utility column {
+  width: 100%;
+  max-width: 1040px;
+  margin-inline: auto;
+  padding-inline: 20px;
+
+  @media (width >= 40rem) {
+    padding-inline: 32px;
+  }
+}
+
+@utility title {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+
+  @media (width >= 40rem) {
+    font-size: 36px;
+  }
+}
+
+@utility lede {
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--color-ink-2);
+  text-wrap: pretty;
+}
+
+/* The one button: ink on paper by day, paper on ink by night. */
+@utility button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 44px;
+  padding-inline: 22px;
+  border-radius: 9999px;
+  background: var(--color-prominent);
+  color: var(--color-on-prominent);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  transition: background-color 150ms;
+
+  &:hover {
+    background: color-mix(in oklab, var(--color-prominent) 84%, var(--color-page));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+    transition-duration: 0s !important;
+  }
+}
