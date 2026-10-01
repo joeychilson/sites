@@ -263,10 +263,10 @@
         </Terminal>
         <h3 class="mt-8 text-[17px] font-semibold tracking-[-0.015em]">Or make it a rule</h3>
         <p class="mt-1 text-ink-2">
-          Add this as a Claude Code hook to block subagents once less than half the week is left,
-          and tell the agent why:
+          Add this to Claude Code as a PreToolUse hook on the Agent tool. It blocks subagents once
+          less than half the week is left, and tells the agent why:
         </p>
-        <Command class="mt-5" command="turnscope guard --limit week --below 50 --say '{say}'" />
+        <Command class="mt-5" command="{executable} guard --limit week --below 50 --say '{say}'" />
       </div>
     </div>
   </section>
