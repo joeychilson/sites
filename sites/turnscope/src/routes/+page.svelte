@@ -15,15 +15,15 @@
   let open = $state(true);
 
   const states = [
-    { figure: '62%', state: 'lasts', clock: 'Mon 10:12 AM', name: 'Gray', text: 'What’s left, while it lasts.' },
+    { figure: '62%', state: 'lasts', clock: 'Mon 10:12 AM', name: 'Gray', text: 'It lasts until it resets. The number is what’s left.' },
     {
       figure: '1h 40m',
       state: 'short',
       clock: 'Wed 7:20 AM',
       name: 'Amber',
-      text: 'How long it has, once it will run out before it resets.',
+      text: 'It runs out before it resets. In the last three hours, it counts down.',
     },
-    { figure: 'Back 5:40 AM', state: 'out', clock: 'Fri 1:05 AM', name: 'Red', text: 'When it’s back, once it’s used up.' },
+    { figure: 'Back 5:40 AM', state: 'out', clock: 'Fri 1:05 AM', name: 'Red', text: 'It’s used up. The time is when it’s back.' },
   ] as const;
 
   // As Words.note in the app words them.
@@ -35,11 +35,11 @@
 
   const tools = [
     { name: 'check_limits', asks: 'How much is left, and will it last?' },
-    { name: 'explain_limit', asks: 'What used a limit, and why?' },
-    { name: 'find_sessions', asks: 'Which sessions?' },
-    { name: 'get_session', asks: 'What was it doing, and where did it stop?' },
+    { name: 'explain_limit', asks: 'What used up a limit, and why?' },
+    { name: 'find_sessions', asks: 'Which sessions match a folder, agent or search?' },
+    { name: 'get_session', asks: 'What was a session doing, and where did it stop?' },
     { name: 'read_session', asks: 'What exactly was said and done?' },
-    { name: 'get_usage', asks: 'How much, when, and on what?' },
+    { name: 'get_usage', asks: 'How many tokens, and what did they cost?' },
   ];
 
   const clients = [
@@ -70,7 +70,7 @@
 
   const facts = [
     { label: 'Price', value: 'Free' },
-    { label: 'Account', value: 'None' },
+    { label: 'Sign-up', value: 'None' },
     { label: 'Telemetry', value: 'None' },
     { label: 'Your agents’ files', value: 'Read only' },
   ];
@@ -104,8 +104,8 @@
         Know if your limits will last
       </h1>
       <p class="lede mt-6 max-w-[28em] sm:text-[20px]">
-        Turnscope sits in your menu bar and says whether your coding agents’ limits will last, and
-        lets the agents ask it too. For Claude Code, Codex, OpenCode, Pi and Grok Build.
+        Turnscope shows what’s left of your subscription’s limits, and whether it’ll last at the pace
+        you’re going. It’s a menu bar app for Claude Code, Codex, OpenCode, Pi and Grok Build.
       </p>
       {@render install()}
     </div>
@@ -126,8 +126,8 @@
   <section class="column pt-28 sm:pt-40" aria-labelledby="calm">
     <h2 id="calm" class="title">Gray until it matters</h2>
     <p class="lede mt-4 max-w-[32em]">
-      A glance at the menu bar says whether to keep going. It only takes on color when a limit
-      won’t last.
+      The number in the menu bar is what’s left of your tightest limit. It stays gray while that
+      will last, and turns amber or red when it won’t.
     </p>
     <ul class="mt-10 grid gap-8 sm:grid-cols-3 sm:gap-5">
       {#each states as item (item.state)}
@@ -154,10 +154,10 @@
     aria-labelledby="told"
   >
     <div class="min-w-0">
-      <h2 id="told" class="title">Told before you run out</h2>
+      <h2 id="told" class="title">Warned before you run out</h2>
       <p class="lede mt-4 max-w-[30em]">
-        A notification when a limit won’t last at your pace, when it’s used up, and when it’s back.
-        Or a recap of last week, on Monday morning.
+        Turnscope sends a notification when a limit won’t last at your pace, when it’s used up, and
+        when it’s back. You can also get a recap of your week every Monday morning.
       </p>
     </div>
     <ul class="flex flex-col gap-2.5">
@@ -187,8 +187,8 @@
       <div class="min-w-0">
         <h2 id="agents" class="title">Your agents can pace themselves</h2>
         <p class="lede mt-4 max-w-[30em]">
-          Turnscope is an MCP server too. Before costly work, an agent can check what’s left, and
-          change course when it won’t last.
+          Turnscope is also an MCP server, so an agent can check its own limits before starting
+          something big, and take a cheaper route if they won’t last.
         </p>
       </div>
       <!-- An agent's turn, as a terminal shows it. -->
@@ -218,7 +218,7 @@
     <div class="mt-16 grid gap-10 lg:grid-cols-2 lg:gap-16">
       <div class="min-w-0">
         <h3 class="text-[17px] font-semibold tracking-[-0.015em]">Connect an agent</h3>
-        <p class="mt-1 text-ink-2">In a click from Settings, or with the agent’s own command.</p>
+        <p class="mt-1 text-ink-2">One click in Settings, or run the agent’s own command:</p>
         <div class="mt-5">
           <Tabs label="Agent" options={clients} bind:value={client}>
             {#snippet panel(item)}
@@ -230,11 +230,12 @@
       <div class="min-w-0">
         <h3 class="text-[17px] font-semibold tracking-[-0.015em]">Or make it a rule</h3>
         <p class="mt-1 text-ink-2">
-          A hook can ask first. This one stops a subagent while under half the week is left.
+          Add this as a Claude Code hook to block subagents once less than half the week is left,
+          and tell the agent why:
         </p>
         <Command
           class="mt-5"
-          command="turnscope guard --limit week --below 50 --say 'Under half the week is left. Do this yourself.'"
+          command="turnscope guard --limit week --below 50 --say 'Less than half the week is left. Do this yourself.'"
         />
       </div>
     </div>
@@ -243,8 +244,8 @@
   <section class="column pt-28 sm:pt-40" aria-labelledby="privacy">
     <h2 id="privacy" class="title">Your history stays on your Mac</h2>
     <p class="lede mt-4 max-w-[32em]">
-      It reads what your agents already keep, and only goes online for your limits, model prices and
-      its own updates.
+      Turnscope reads the history files your agents already keep, and never changes them. It only
+      connects to your providers for your limits, models.dev for prices, and GitHub for updates.
     </p>
     <dl class="mt-10 grid grid-cols-2 gap-2.5 sm:grid-cols-4">
       {#each facts as fact (fact.label)}
