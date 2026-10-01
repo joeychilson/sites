@@ -111,8 +111,8 @@
               <span class="min-w-0 flex-1">
                 <span class="flex items-center gap-[5px] text-[12px] leading-[15px]">
                   Rethink the architecture
-                  <span class="size-[5px] rounded-full bg-label"></span><span class="sr-only">
-                    Active now</span
+                  <span class="size-1.5 rounded-full bg-active" title="Active now"></span><span
+                    class="sr-only">Active now</span
                   >
                 </span>
                 <span class="mt-px block text-[11px] leading-[13px] text-label-2">
@@ -155,7 +155,8 @@
 
     {#if restingOpen}
       <div transition:slide={room}>
-        <div in:fade={appear}>
+        <!-- Rows 4 points apart, so one open, or pointed at, doesn't sit on the next. -->
+        <div class="flex flex-col gap-1 pt-1" in:fade={appear}>
           {#each resting as account (account.name)}
             {@const usable = !!account.limit}
             <button

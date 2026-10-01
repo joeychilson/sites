@@ -4,7 +4,7 @@ The landing page for [Turnscope](https://github.com/joeychilson/turnscope).
 
 ## Layout
 
-Turnscope is a menu bar item, its panel, notifications and an MCP server, so the page is drawn as the top of a Mac: its header is the menu bar, clear over a desktop as macOS 26 draws it, and the panel hangs open from Turnscope's item in the system's glass. On a wide screen the panel floats, so a row opened in it lies over the page rather than pushing it down. The page keeps to the app's rule: gray until something needs you. The desktop's wallpaper is gray too, so the only color on the page is a limit that won't last, in amber, and one used up, in red.
+Turnscope is a menu bar item, its panel, notifications and an MCP server, so the page is drawn as the top of a Mac: its header is the menu bar, clear over a desktop as macOS 26 draws it, and the panel hangs open from Turnscope's item in the system's glass. On a wide screen the panel floats, so a row opened in it lies over the page rather than pushing it down. The page keeps to the app's rule: gray until something needs you. The desktop's wallpaper is gray too, so the only colors on the page are a limit that won't last, in amber, one used up, in red, and a session at work right now, in green, the one color that asks nothing of you.
 
 - `src/lib/site.ts`: name, description, links, and the command line agents start the server with.
 - `src/app.css`: the app's colors (`macos/Turnscope/Style.swift` in the Turnscope repo) as Tailwind theme values, light and dark: the page's own, and macOS's label colors and popover glass for what the app draws. The shared utilities.

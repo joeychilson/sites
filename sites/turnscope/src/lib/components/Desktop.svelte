@@ -4,8 +4,8 @@
   // A Mac's desktop, under what the page draws of one: the menu bar, the
   // panel, notifications. Its wallpaper is waves in the page's grays, so the
   // glass over it reads as glass and the page keeps to the app's rule, that
-  // the only color is a limit in trouble. With `fade`, it fades into the page
-  // at its foot.
+  // color is only for a limit in trouble or a session at work. With `fade`,
+  // it fades into the page at its foot.
   let {
     children,
     fade = false,

@@ -3,10 +3,10 @@
 /*
  * The app's look (macos/Turnscope/Style.swift in the Turnscope repo): the
  * system's own grays, until something needs you. Amber for a limit that runs
- * out before it resets at this pace, red for one used up. The page keeps to
- * that, so the only color on it is a limit in trouble. Each color has its
- * light and dark value, and the page follows the system appearance, as the
- * app does.
+ * out before it resets at this pace, red for one used up. The one other color
+ * is green, for a session at work this moment, since it asks nothing of you.
+ * The page keeps to that. Each color has its light and dark value, and the
+ * page follows the system appearance, as the app does.
  */
 @theme {
   --color-*: initial;
@@ -41,6 +41,8 @@
   /* The app's own amber and red, as its panel and menu bar draw them. */
   --color-amber: #ed9419;
   --color-red: #eb4238;
+  /* A session at work this moment (`active` in Style.swift), as bright as the amber. */
+  --color-active: #45b86e;
   /* The amber, deep enough to read as text on the page. */
   --color-amber-ink: light-dark(#b36800, #f5a531);
   --color-focus: light-dark(#0a64d6, #4c9bff);
