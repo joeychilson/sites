@@ -42,7 +42,7 @@
   <meta property="og:image:height" content="630" />
   <meta
     property="og:image:alt"
-    content="Turnscope’s menu bar panel: Claude Max runs out in 2 hours, in amber, an hour before it resets."
+    content="Turnscope’s panel, open under its menu bar item: Claude Max runs out in 2 hours, in amber. Stay under 6% an hour to last."
   />
   <meta name="twitter:card" content="summary_large_image" />
   {#if jsonLd}

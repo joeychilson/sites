@@ -17,7 +17,7 @@ Turnscope is a menu bar item, its panel, notifications and an MCP server, so the
 - `src/lib/components/Terminal.svelte`: a terminal window, for Claude Code's turns.
 - `src/lib/components/Glyph.svelte`: the SF Symbols the page draws (the panel's gear, power, chevrons, lightbulb and checkmark; the menu bar's Wi-Fi, Spotlight and Control Center), exported from macOS as paths at the app's sizes and weights.
 - `src/lib/assets/`: the app icon, rendered from `Turnscope.icon` with Icon Composer's `ictool`, light and dark.
-- `static/social-card.png`: the 1200 × 630 sharing image, the hero at twice the size. Draw it again when the headline or the panel changes.
+- `static/social-card.png`: the 1200 × 630 sharing image: the menu bar, the headline and the panel over the desktop, in light, laid out at 800 × 420 and drawn at one and a half times that size with headless Chrome (`--window-size=800,420 --force-device-scale-factor=1.5`). Draw it again when the headline or the panel changes.
 
 ## Releases
 
