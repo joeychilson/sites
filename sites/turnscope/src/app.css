@@ -18,15 +18,26 @@
   --color-panel: light-dark(#ffffff, #262628);
   --color-bar: light-dark(rgb(250 250 249 / 0.78), rgb(38 38 40 / 0.72));
   --color-fill: light-dark(rgb(29 29 31 / 0.055), rgb(245 245 247 / 0.07));
-  --color-hover: light-dark(rgb(29 29 31 / 0.08), rgb(245 245 247 / 0.1));
   --color-edge: light-dark(rgb(29 29 31 / 0.1), rgb(245 245 247 / 0.12));
-  --color-track: light-dark(rgb(29 29 31 / 0.1), rgb(245 245 247 / 0.12));
-  --color-level: light-dark(rgb(29 29 31 / 0.26), rgb(245 245 247 / 0.3));
-  --color-level-2: light-dark(rgb(29 29 31 / 0.6), rgb(245 245 247 / 0.62));
   --color-thumb: light-dark(#ffffff, #48484b);
   --color-raised: light-dark(#ececea, #3a3a3d);
   --color-prominent: light-dark(#1d1d1f, #f5f5f7);
   --color-on-prominent: light-dark(#ffffff, #1d1d1f);
+  /*
+   * What the app's own views are drawn in, inside its panel and menu bar:
+   * macOS's label colors (.primary to .quaternary), its popover glass, and a
+   * row's fill while pointed at or open (Style.swift).
+   */
+  --color-label: light-dark(rgb(0 0 0 / 0.85), rgb(255 255 255 / 0.85));
+  --color-label-2: light-dark(rgb(0 0 0 / 0.5), rgb(255 255 255 / 0.55));
+  --color-label-3: light-dark(rgb(0 0 0 / 0.26), rgb(255 255 255 / 0.25));
+  --color-label-4: light-dark(rgb(0 0 0 / 0.1), rgb(255 255 255 / 0.1));
+  --color-glass: light-dark(rgb(248 248 248 / 0.74), rgb(34 34 36 / 0.7));
+  --color-glass-edge: light-dark(rgb(0 0 0 / 0.1), rgb(255 255 255 / 0.12));
+  --color-glass-rim: light-dark(rgb(255 255 255 / 0.7), rgb(255 255 255 / 0.1));
+  --color-row: light-dark(rgb(0 0 0 / 0.05), rgb(255 255 255 / 0.06));
+  /* The menu bar's highlight, under a status item while its panel is open. */
+  --color-highlight: light-dark(rgb(0 0 0 / 0.1), rgb(255 255 255 / 0.18));
   /* The app's own amber and red, as its panel and menu bar draw them. */
   --color-amber: #ed9419;
   --color-red: #eb4238;
@@ -38,10 +49,10 @@
     -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, 'Segoe UI', Roboto,
     'Helvetica Neue', sans-serif;
   --font-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
+  /* The panel's figures are SF Pro Rounded, where the browser has it. */
+  --font-rounded: ui-rounded, 'SF Pro Rounded', var(--font-sans);
 
   --radius-row: 12px;
-  --radius-panel: 14px;
-  --radius-note: 20px;
   --radius-tile: 22px;
 
   --shadow-panel:
@@ -50,6 +61,13 @@
     0 0 0 0.5px var(--color-edge), 0 4px 18px light-dark(rgb(0 0 0 / 0.07), rgb(0 0 0 / 0.35));
   --shadow-thumb:
     0 0 0 0.5px var(--color-edge), 0 1px 3px light-dark(rgb(0 0 0 / 0.1), rgb(0 0 0 / 0.4));
+  /* The panel as it floats (Floating in Panel.swift): its edge, and its shadow. */
+  --shadow-glass:
+    inset 0 0 0 0.5px var(--color-glass-edge), inset 0 1px 0 var(--color-glass-rim),
+    0 8px 36px light-dark(rgb(0 0 0 / 0.2), rgb(0 0 0 / 0.45));
+  --shadow-banner:
+    inset 0 0 0 0.5px var(--color-glass-edge), inset 0 1px 0 var(--color-glass-rim),
+    0 6px 24px light-dark(rgb(0 0 0 / 0.12), rgb(0 0 0 / 0.35));
 
   --ease-spring: cubic-bezier(0.2, 0.9, 0.25, 1);
 }
@@ -130,6 +148,20 @@ body {
   &:hover {
     background: color-mix(in oklab, var(--color-prominent) 84%, var(--color-page));
   }
+}
+
+/* The system's popover glass, as the app's panel and macOS's notifications are drawn. */
+@utility glass {
+  background: var(--color-glass);
+  -webkit-backdrop-filter: blur(30px) saturate(1.5);
+  backdrop-filter: blur(30px) saturate(1.5);
+}
+
+/* What the app's views are set in: the system font at its own tracking. */
+@utility mac {
+  color: var(--color-label);
+  letter-spacing: normal;
+  cursor: default;
 }
 
 @media (prefers-reduced-motion: reduce) {
