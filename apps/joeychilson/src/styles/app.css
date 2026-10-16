@@ -1,0 +1,230 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/inter/opsz.css';
+@import '@fontsource-variable/inter/opsz-italic.css';
+@import './prose.css';
+
+@font-face {
+  font-family: 'Departure Mono';
+  src: url('../assets/departure-mono.woff2') format('woff2');
+  font-display: swap;
+}
+
+@theme {
+  --color-*: initial;
+  --color-page: light-dark(#fdfdfc, #111111);
+  --color-ink: light-dark(#161616, #ededed);
+  --color-ink-secondary: light-dark(rgb(0 0 0 / 0.62), rgb(255 255 255 / 0.62));
+  --color-ink-faint: light-dark(rgb(0 0 0 / 0.45), rgb(255 255 255 / 0.45));
+  --color-line: light-dark(rgb(0 0 0 / 0.16), rgb(255 255 255 / 0.2));
+  --color-muted: light-dark(rgb(0 0 0 / 0.04), rgb(255 255 255 / 0.06));
+  --color-selection: light-dark(rgb(0 0 0 / 0.1), rgb(255 255 255 / 0.18));
+
+  --color-code: light-dark(#262626, #dedede);
+  --color-code-name: light-dark(#000000, #ffffff);
+  --color-code-keyword: light-dark(#a15c05, #f4c36a);
+  --color-code-type: light-dark(#56627a, #c6ccd8);
+  --color-code-string: light-dark(#3c6591, #a9b8cf);
+  --color-code-number: light-dark(#bd4a1c, #f39a6b);
+  --color-code-operator: light-dark(#8c8c8c, #888888);
+  --color-code-comment: light-dark(#999999, #6f6f6f);
+
+  --color-star: light-dark(transparent, rgb(255 255 255 / 0.45));
+  --color-sun: light-dark(#f2a93b, transparent);
+  --color-moon: light-dark(transparent, #d4d9e4);
+  --color-crater: light-dark(transparent, #aab2c2);
+  --color-far: light-dark(#eaeaea, #1d1d1d);
+  --color-near: light-dark(#d6d6d5, #2c2c2c);
+  --color-window: light-dark(#f0f0ef, #1a1a1a);
+  --color-lamp: light-dark(transparent, #f4c36a);
+  --color-lamp-far: light-dark(transparent, rgb(244 195 106 / 0.55));
+  --color-street: light-dark(#e0e0df, #242424);
+  --color-car: light-dark(#979796, #5f5f5f);
+
+  --font-sans: 'Inter Variable', -apple-system, system-ui, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
+  --font-pixel: 'Departure Mono', ui-monospace, monospace;
+
+  --text-pixel: 11px;
+  --text-pixel--line-height: 11px;
+  --text-pixel--letter-spacing: 0;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  --animate-rise: rise 700ms var(--ease-out) both;
+  --animate-twinkle: twinkle 4s ease-in-out infinite alternate;
+  --animate-drive-east: drive-east 11s linear infinite;
+  --animate-drive-west: drive-west 16s linear 5s infinite;
+  --animate-flicker: flicker 7s steps(1) infinite;
+  --animate-landed: landed 1.6s var(--ease-out);
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      translate: 0 8px;
+    }
+  }
+
+  @keyframes twinkle {
+    from {
+      opacity: 0.2;
+    }
+    to {
+      opacity: 0.9;
+    }
+  }
+
+  @keyframes drive-east {
+    from {
+      translate: -4px;
+    }
+    to {
+      translate: 64px;
+    }
+  }
+
+  @keyframes drive-west {
+    from {
+      translate: 64px;
+    }
+    to {
+      translate: -4px;
+    }
+  }
+
+  @keyframes landed {
+    from {
+      background-color: var(--color-selection);
+      box-shadow: 0 0 0 4px var(--color-selection);
+    }
+  }
+
+  @keyframes flicker {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    91% {
+      opacity: 0.3;
+    }
+    93% {
+      opacity: 1;
+    }
+    95% {
+      opacity: 0.4;
+    }
+  }
+}
+
+:root {
+  color-scheme: light dark;
+  scrollbar-gutter: stable;
+  background-color: var(--color-page);
+  --night: 0;
+
+  &[data-theme='light'] {
+    color-scheme: light;
+  }
+
+  &[data-theme='dark'] {
+    color-scheme: dark;
+    --night: 1;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    &:not([data-theme='light']) {
+      --night: 1;
+    }
+  }
+}
+
+@layer base {
+  body {
+    @apply font-sans text-[15px]/[23px] font-[450] tracking-[-0.09px] text-ink antialiased [text-rendering:optimizeLegibility];
+  }
+
+  ::selection {
+    @apply bg-selection;
+  }
+
+  :focus-visible {
+    @apply rounded-[3px] outline-2 outline-offset-3 outline-ink-faint;
+  }
+}
+
+@utility link {
+  @apply underline decoration-line decoration-1 underline-offset-3 transition-colors hover:text-ink hover:decoration-ink-faint;
+}
+
+@utility rise-* {
+  animation: var(--animate-rise);
+  animation-delay: calc(--value(integer) * 70ms);
+}
+
+::view-transition-group(*) {
+  animation-duration: 420ms;
+  animation-timing-function: var(--ease-out);
+}
+
+:root:active-view-transition-type(page) {
+  &::view-transition-old(root) {
+    animation: 150ms ease-in both fade-out;
+  }
+
+  &::view-transition-new(root) {
+    animation: none;
+  }
+}
+
+:root:active-view-transition-type(nightfall, daybreak) {
+  & * {
+    view-transition-name: none !important;
+  }
+
+  &::view-transition-old(root) {
+    animation: none;
+  }
+
+  &::view-transition-new(root) {
+    mask-image: linear-gradient(to bottom, #000 40%, transparent 60%);
+    mask-size: 100% 250%;
+    animation: 1000ms var(--ease-in-out) both nightfall;
+  }
+}
+
+:root:active-view-transition-type(daybreak)::view-transition-new(root) {
+  mask-image: linear-gradient(to top, #000 40%, transparent 60%);
+  animation-name: daybreak;
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes nightfall {
+  from {
+    mask-position: 0 100%;
+  }
+  to {
+    mask-position: 0 0;
+  }
+}
+
+@keyframes daybreak {
+  from {
+    mask-position: 0 0;
+  }
+  to {
+    mask-position: 0 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}

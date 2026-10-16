@@ -1,0 +1,175 @@
+@layer components {
+  .prose {
+    @apply wrap-break-word;
+
+    > :first-child {
+      margin-top: 0;
+    }
+
+    :where(p, ul, ol, blockquote, table, .markdown-alert) {
+      @apply mb-4 last:mb-0;
+    }
+
+    li :where(p, ul, ol, blockquote, table) {
+      @apply mb-1.5;
+    }
+
+    a:not(.anchor-heading) {
+      @apply link;
+    }
+
+    strong {
+      font-weight: 600;
+    }
+
+    :where(h2, h3, h4) {
+      @apply relative mt-9 mb-3 scroll-mt-6 font-[560];
+    }
+
+    :where(h3, h4) {
+      @apply text-ink-secondary;
+    }
+
+    .anchor-heading {
+      @apply absolute top-0 -left-[0.9em] text-ink-faint no-underline opacity-0 transition-[opacity,translate] duration-150 ease-out motion-safe:translate-x-1;
+    }
+
+    :where(h2, h3, h4):hover .anchor-heading,
+    .anchor-heading:focus-visible {
+      @apply translate-x-0 opacity-100;
+    }
+
+    ul,
+    ol {
+      @apply ps-[18px];
+
+      li + li,
+      li > :is(ul, ol) {
+        @apply mt-1.5;
+      }
+    }
+
+    ul {
+      @apply list-disc;
+    }
+
+    ol {
+      @apply list-decimal;
+    }
+
+    li {
+      @apply scroll-mt-6 marker:text-ink-faint;
+    }
+
+    li:has(> input[type='checkbox']) {
+      @apply -ms-[18px] list-none;
+    }
+
+    input[type='checkbox'] {
+      @apply me-1.5 size-[13px] align-middle accent-ink-faint;
+    }
+
+    blockquote {
+      @apply ps-[18px] text-ink-secondary;
+    }
+
+    .markdown-alert {
+      @apply rounded-[10px] bg-muted px-4 py-3;
+    }
+
+    .markdown-alert-title {
+      @apply mb-2 font-pixel text-pixel text-ink-faint uppercase;
+    }
+
+    :not(pre) > code {
+      @apply rounded-sm bg-muted px-1 py-px font-mono text-[0.87em];
+    }
+
+    table {
+      @apply block overflow-x-auto;
+    }
+
+    th {
+      @apply text-ink-faint;
+      font-weight: inherit;
+    }
+
+    :where(th, td) {
+      @apply py-1 pe-6 text-start;
+    }
+
+    img {
+      @apply max-w-full rounded-md;
+    }
+
+    hr {
+      @apply my-8 h-auto border-0 text-center text-ink-faint before:tracking-[0.5em] before:content-['*_*_*'];
+    }
+
+    .footnotes {
+      @apply mt-8 text-ink-secondary;
+    }
+
+    sup {
+      @apply text-[0.75em];
+
+      > a {
+        @apply before:content-['['] after:content-[']'];
+      }
+    }
+
+    :target {
+      @apply motion-safe:animate-landed;
+    }
+  }
+
+  .th-code {
+    @apply overflow-x-auto px-4 pt-2.5 pb-3.5 font-mono text-[13px]/[1.7] tracking-normal text-code;
+
+    code {
+      @apply block w-fit min-w-full;
+    }
+
+    .th-line--highlighted {
+      @apply -mx-4 inline-block w-[calc(100%+2rem)] bg-muted px-4;
+    }
+  }
+
+  .th-keyword,
+  .th-tag,
+  .th-selector {
+    @apply text-code-keyword;
+  }
+
+  .th-function,
+  .th-command,
+  .th-heading {
+    @apply text-code-name;
+  }
+
+  .th-type,
+  .th-attr,
+  .th-meta {
+    @apply text-code-type;
+  }
+
+  .th-string,
+  .th-inserted,
+  .th-link {
+    @apply text-code-string;
+  }
+
+  .th-number,
+  .th-literal,
+  .th-deleted {
+    @apply text-code-number;
+  }
+
+  .th-operator {
+    @apply text-code-operator;
+  }
+
+  .th-comment {
+    @apply text-code-comment italic;
+  }
+}
