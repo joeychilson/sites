@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "source": {},
+  "resolved": {
+    "compatibility_date": "2026-02-24",
+    "account_id": "0d258b94b44380cbf5035e7a5fb6ce40",
+    "kv_namespaces": [
+      {
+        "binding": "KV",
+        "id": "79dfbd7ef3ac477695e746286f6a47c8"
+      },
+      {
+        "binding": "ISR_CACHE",
+        "id": "874cdd8f038c41cdbd769b3e79ce2d37"
+      }
+    ],
+    "name": "turnscope",
+    "routes": [
+      {
+        "pattern": "turnscope.app",
+        "custom_domain": true
+      }
+    ]
+  },
+  "text": "// void:published-traffic:v1:eyJ3b3JrZXJzX2RldiI6ZmFsc2UsInByZXZpZXdfdXJscyI6ZmFsc2UsInJvdXRlcyI6W3sicGF0dGVybiI6InR1cm5zY29wZS5hcHAiLCJjdXN0b21fZG9tYWluIjp0cnVlfV19\n{\n  \"compatibility_date\": \"2026-02-24\",\n  \"account_id\": \"0d258b94b44380cbf5035e7a5fb6ce40\",\n  \"kv_namespaces\": [\n    {\n      \"binding\": \"KV\",\n      \"id\": \"79dfbd7ef3ac477695e746286f6a47c8\"\n    },\n    {\n      \"binding\": \"ISR_CACHE\",\n      \"id\": \"874cdd8f038c41cdbd769b3e79ce2d37\"\n    }\n  ],\n  \"name\": \"turnscope\",\n  \"routes\": [\n    {\n      \"pattern\": \"turnscope.app\",\n      \"custom_domain\": true\n    }\n  ]\n}\n"
+}

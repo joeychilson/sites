@@ -1,0 +1,30 @@
+{
+  "name": "turnscope",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prepare": "void prepare",
+    "dev": "vp dev",
+    "build": "vp build",
+    "preview": "vp preview",
+    "test": "vp test",
+    "theme": "astryx theme build src/styles/theme/turnscope.ts --out src/styles/theme/built/turnscope.css"
+  },
+  "dependencies": {
+    "@astryxdesign/core": "catalog:",
+    "@stylexjs/stylex": "catalog:",
+    "@void/react": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "void": "catalog:"
+  },
+  "devDependencies": {
+    "@astryxdesign/cli": "catalog:",
+    "@stylexjs/unplugin": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vite-plus": "catalog:"
+  }
+}

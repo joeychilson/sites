@@ -1,0 +1,31 @@
+{
+  "name": "joeychilson",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prepare": "void prepare",
+    "dev": "vp dev",
+    "build": "vp build",
+    "preview": "vp preview",
+    "test": "vp test",
+    "theme": "astryx theme build src/styles/theme/city.ts --out src/styles/theme/built/city.css"
+  },
+  "dependencies": {
+    "@astryxdesign/core": "catalog:",
+    "@fontsource-variable/inter": "catalog:",
+    "@stylexjs/stylex": "catalog:",
+    "@void/md": "catalog:",
+    "@void/react": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "void": "catalog:"
+  },
+  "devDependencies": {
+    "@astryxdesign/cli": "catalog:",
+    "@stylexjs/unplugin": "catalog:",
+    "@types/react": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vite-plus": "catalog:"
+  }
+}

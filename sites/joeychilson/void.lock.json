@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "source": {},
+  "resolved": {
+    "compatibility_date": "2026-02-24",
+    "account_id": "0d258b94b44380cbf5035e7a5fb6ce40",
+    "kv_namespaces": [
+      {
+        "binding": "ISR_CACHE",
+        "id": "0a89af94437148809402e95e159c2520"
+      }
+    ],
+    "name": "joeychilson",
+    "routes": [
+      {
+        "pattern": "joeychilson.com",
+        "custom_domain": true
+      },
+      {
+        "pattern": "joeychilson.dev",
+        "custom_domain": true
+      }
+    ]
+  },
+  "text": "// void:published-traffic:v1:eyJ3b3JrZXJzX2RldiI6ZmFsc2UsInByZXZpZXdfdXJscyI6ZmFsc2UsInJvdXRlcyI6W3sicGF0dGVybiI6ImpvZXljaGlsc29uLmNvbSIsImN1c3RvbV9kb21haW4iOnRydWV9LHsicGF0dGVybiI6ImpvZXljaGlsc29uLmRldiIsImN1c3RvbV9kb21haW4iOnRydWV9XX0\n{\n  \"compatibility_date\": \"2026-02-24\",\n  \"account_id\": \"0d258b94b44380cbf5035e7a5fb6ce40\",\n  \"kv_namespaces\": [\n    {\n      \"binding\": \"ISR_CACHE\",\n      \"id\": \"0a89af94437148809402e95e159c2520\"\n    }\n  ],\n  \"name\": \"joeychilson\",\n  \"routes\": [\n    {\n      \"pattern\": \"joeychilson.com\",\n      \"custom_domain\": true\n    },\n    {\n      \"pattern\": \"joeychilson.dev\",\n      \"custom_domain\": true\n    }\n  ]\n}\n"
+}
