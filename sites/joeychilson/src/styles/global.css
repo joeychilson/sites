@@ -1,0 +1,152 @@
+@import '@astryxdesign/core/reset.css';
+@import './theme/built/city.css';
+@import '@fontsource-variable/inter/opsz.css';
+@import '@fontsource-variable/inter/opsz-italic.css';
+
+/* A pixel face drawn on an 11-pixel grid, so it's sharp at 11px and 22px. */
+@font-face {
+  font-family: 'Departure Mono';
+  src: url('../assets/departure-mono.woff2') format('woff2');
+  font-display: swap;
+}
+
+/* 0 by day and 1 by night, by the same rules as color-scheme, so the sky can move between them. */
+@property --night {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 0;
+}
+
+:root[data-theme='dark'] {
+  --night: 1;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --night: 1;
+  }
+}
+
+:root {
+  scrollbar-gutter: stable;
+  background-color: var(--color-background-body);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  color: var(--color-text-primary);
+  font-size: 15px;
+  font-weight: 450;
+  line-height: 23px;
+  letter-spacing: -0.006em;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-selection);
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus-outline-color);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/*
+ * Inside a code block, as rangi writes it: a marked line ({2} after the language) is tinted out to
+ * the block's edges, and comments lean.
+ */
+pre > code > .line.highlight {
+  width: calc(100% + 32px);
+  margin-inline: -16px;
+  padding-inline: 16px;
+  background: var(--color-background-muted);
+}
+
+.shj-cmnt {
+  font-style: italic;
+}
+
+/*
+ * Between pages the old page fades out and the new one in, so the header, the same at the top of
+ * each, holds still. A post's title glides between the list and the post.
+ */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root) {
+  animation: 160ms ease-in both fade-out;
+}
+
+::view-transition-new(root) {
+  animation: 380ms var(--ease-out) 60ms both fade-in;
+}
+
+::view-transition-group(*) {
+  animation-duration: 420ms;
+  animation-timing-function: var(--ease-out);
+}
+
+/*
+ * Night falls from the top of the page through a soft band like dusk, and day comes up from the
+ * bottom. The new page is live under the band, so the city keeps moving.
+ */
+:root:active-view-transition-type(theme)::view-transition-old(root) {
+  animation: none;
+}
+
+:root:active-view-transition-type(theme)::view-transition-new(root) {
+  mask-image: linear-gradient(to bottom, #000 40%, transparent 60%);
+  mask-size: 100% 250%;
+  mask-repeat: no-repeat;
+  animation: 1000ms cubic-bezier(0.55, 0, 0.3, 1) both nightfall;
+}
+
+:root:active-view-transition-type(day)::view-transition-new(root) {
+  mask-image: linear-gradient(to top, #000 40%, transparent 60%);
+  animation-name: daybreak;
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes nightfall {
+  from {
+    mask-position: 0 100%;
+  }
+  to {
+    mask-position: 0 0;
+  }
+}
+
+@keyframes daybreak {
+  from {
+    mask-position: 0 0;
+  }
+  to {
+    mask-position: 0 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}

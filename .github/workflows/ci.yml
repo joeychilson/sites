@@ -1,0 +1,78 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+# A new push replaces a pull request's run, but runs on main wait their turn, so a deploy is never
+# cut off partway.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  check:
+    name: Check
+    runs-on: ubuntu-26.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - uses: voidzero-dev/setup-vp@v1.21.2
+        with:
+          node-version: '24'
+          cache: true
+      # The built Astryx themes are committed; fail when one no longer matches its source.
+      - run: vp run -r theme
+      - run: git diff --exit-code
+      - run: vp check
+      - run: vp run -r test
+      - run: vp run -r build
+
+  deploy:
+    name: Deploy ${{ matrix.site }}
+    needs: check
+    if: github.event_name == 'push'
+    runs-on: ubuntu-26.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        site: [joeychilson, turnscope]
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      # Deploy only a site this push changed, or every site when the shared dependencies did.
+      - id: changes
+        env:
+          BEFORE: ${{ github.event.before }}
+          SITE: ${{ matrix.site }}
+        run: |
+          if git cat-file -e "$BEFORE^{commit}" 2>/dev/null &&
+            git diff --quiet "$BEFORE" HEAD -- "sites/$SITE" package.json pnpm-lock.yaml pnpm-workspace.yaml; then
+            echo "deploy=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "deploy=true" >> "$GITHUB_OUTPUT"
+          fi
+      - if: steps.changes.outputs.deploy == 'true'
+        uses: voidzero-dev/setup-vp@v1.21.2
+        with:
+          node-version: '24'
+          cache: true
+      # The saved target lives in the ignored .void/, so CI names the platform.
+      - if: steps.changes.outputs.deploy == 'true'
+        run: pnpm void deploy --platform cloudflare
+        working-directory: sites/${{ matrix.site }}
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          # The sites serve only their own domains, so Void checks each new version through the
+          # account's workers.dev subdomain before it takes traffic.
+          CLOUDFLARE_WORKERS_SUBDOMAIN: joeychilson

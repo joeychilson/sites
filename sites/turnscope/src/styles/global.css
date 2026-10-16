@@ -1,0 +1,32 @@
+@import '@astryxdesign/core/reset.css';
+@import './theme/built/turnscope.css';
+
+html {
+  scrollbar-gutter: stable;
+  /* The sticky header's 64px, and the 32px that sticky section text also keeps below it. */
+  scroll-padding-top: 96px;
+  background-color: var(--color-background-body);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  color: var(--color-text-primary);
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  font-synthesis: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus-outline-color);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--color-selection);
+}

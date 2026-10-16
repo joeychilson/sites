@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <style>
+    .top { stop-color: #ffffff; }
+    .bottom { stop-color: #e7e7e5; }
+    .ink { fill: #1c1c1e; }
+    @media (prefers-color-scheme: dark) {
+      .top { stop-color: #3a3a3d; }
+      .bottom { stop-color: #18181a; }
+      .ink { fill: #f2f2f4; }
+    }
+  </style>
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" class="top"/>
+      <stop offset="1" class="bottom"/>
+    </linearGradient>
+  </defs>
+  <rect width="1024" height="1024" rx="232" fill="url(#paper)"/>
+  <path class="ink" fill-rule="evenodd" d="M247 512 A265 265 0 1 0 777 512 A265 265 0 1 0 247 512 Z M305 512 A207 207 0 1 0 719 512 A207 207 0 1 0 305 512 Z"/>
+  <path class="ink" d="M512 512 L512.0 343.0 A169 169 0 1 1 373.6 608.9 Z"/>
+</svg>
