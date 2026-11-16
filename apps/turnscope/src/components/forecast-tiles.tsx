@@ -12,7 +12,7 @@ export function ForecastTiles() {
         title="When it runs out"
         text="Whether each limit lasts until it resets, or when it runs out at your pace."
       >
-        <span className="w-full text-[13px]/4">
+        <span className="w-full min-w-0 text-[13px]/4">
           <LimitLine limit={inUse[0].limits[0]} growth="in-view" />
         </span>
       </Tile>
@@ -54,7 +54,8 @@ export function ForecastTiles() {
 
 function Tile({ title, text, children }: { title: string; text: string; children: ReactNode }) {
   return (
-    <li className="rounded-[20px] bg-muted p-6 sm:p-8">
+    // No wider than its column, so on a narrow phone the limit's line is cut short as the panel's is.
+    <li className="min-w-0 rounded-[20px] bg-muted p-6 sm:p-8">
       {/* As tall as the tallest, the notification, so every tile's text starts at one height. */}
       <div aria-hidden="true" className="mb-6 flex h-19 items-center tracking-normal text-label">
         {children}

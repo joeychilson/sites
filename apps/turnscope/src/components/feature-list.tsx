@@ -1,8 +1,8 @@
 import type { Feature } from '@/lib/content';
 
 const columns = {
-  two: 'sm:grid-cols-2',
-  three: 'sm:grid-cols-2 lg:grid-cols-3',
+  one: 'gap-y-6',
+  three: 'gap-x-10 gap-y-9 sm:grid-cols-2 lg:grid-cols-3',
 };
 
 export function FeatureList({
@@ -15,7 +15,7 @@ export function FeatureList({
   titlesAreCode?: boolean;
 }) {
   return (
-    <ul className={`grid gap-x-10 gap-y-9 ${columns[layout]}`}>
+    <ul className={`grid ${columns[layout]}`}>
       {features.map((feature) => (
         <li key={feature.title}>
           <h3
@@ -26,11 +26,6 @@ export function FeatureList({
             }
           >
             {feature.title}
-            {feature.tag && (
-              <span className="ms-2 font-sans text-[13px] font-normal text-ink-faint">
-                {feature.tag}
-              </span>
-            )}
           </h3>
           <p className="mt-1.5 body-text">{feature.text}</p>
         </li>

@@ -90,7 +90,7 @@ export function CommandTabs({ id, label, setups }: { id: string; label: string; 
               tabIndex={isSelected ? 0 : -1}
               onClick={() => select(index)}
               onKeyDown={(event) => keys(event, index)}
-              className={`relative h-8 shrink-0 rounded-full px-4 text-[14px] tracking-normal whitespace-nowrap text-ink-secondary transition-colors duration-200 hover:text-ink aria-selected:text-ink ${isSelected && !thumb ? 'bg-thumb shadow-thumb' : ''}`}
+              className={`relative h-8 shrink-0 rounded-full px-3 text-[14px] tracking-normal whitespace-nowrap text-ink-secondary transition-colors duration-200 hover:text-ink aria-selected:text-ink ${isSelected && !thumb ? 'bg-thumb shadow-thumb' : ''}`}
             >
               {each.label}
             </button>

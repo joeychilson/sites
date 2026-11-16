@@ -66,7 +66,27 @@ export const usedThisWeek: Account[] = [
       { name: 'Weekly', resets: 'Reset 6:30 AM', left: '100%', percent: 100, standing: 'lasts' },
       { name: 'Monthly', resets: 'Resets Oct 22', left: '97%', percent: 97, standing: 'lasts' },
     ],
-    note: 'As read yesterday 9 PM; no agent here is signed in to it now.',
+    note: 'Last read yesterday 9 PM. No agent here is signed in to it.',
+  },
+  {
+    id: 'google-ai',
+    name: 'Google AI Pro',
+    logo: 'google',
+    status: 'Weekly resets Tue 9 PM',
+    standing: 'lasts',
+    figure: '84%',
+    limits: [
+      { name: '5 hours', resets: 'Resets 11:30 AM', left: '91%', percent: 91, standing: 'lasts' },
+      { name: 'Weekly', resets: 'Resets Tue 9 PM', left: '84%', percent: 84, standing: 'lasts' },
+      { name: 'Claude and GPT 5 hours', left: '100%', percent: 100, standing: 'lasts' },
+      {
+        name: 'Claude and GPT weekly',
+        resets: 'Resets Tue 9 PM',
+        left: '62%',
+        percent: 62,
+        standing: 'lasts',
+      },
+    ],
   },
   {
     id: 'openrouter',
@@ -81,7 +101,7 @@ export const usedThisWeek: Account[] = [
       { name: '5 hours', resets: 'Resets 11 AM', left: '100%', percent: 100, standing: 'lasts' },
       { name: 'Daily', resets: 'Resets in 3h', left: '99%', percent: 99, standing: 'lasts' },
     ],
-    note: 'As read 6:50 AM; it couldn’t be read since.',
+    note: 'It couldn’t be read since 6:50 AM.',
   },
 ];
 

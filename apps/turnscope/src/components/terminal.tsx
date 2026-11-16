@@ -54,7 +54,7 @@ export function Turn({
       className={`mt-4 grid grid-cols-[2ch_minmax(0,1fr)] first:mt-0 ${kind === 'asked' ? 'text-ink-secondary' : ''}`}
     >
       <span className={kind === 'asked' ? 'text-ink-faint' : undefined}>{mark}</span>
-      <span>{children}</span>
+      <span className="wrap-break-word">{children}</span>
     </p>
   );
 }

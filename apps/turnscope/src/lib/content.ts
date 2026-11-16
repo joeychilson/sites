@@ -3,7 +3,6 @@ import { site } from '@/lib/site';
 
 export interface Feature {
   title: string;
-  tag?: string;
   text: string;
 }
 
@@ -32,12 +31,18 @@ export const agents: { name: string; logo: LogoName; connect: string }[] = [
     logo: 'xai',
     connect: `grok mcp add --scope user turnscope ${site.executable} mcp`,
   },
+  {
+    name: 'Antigravity',
+    logo: 'google',
+    connect: `agy mcp add turnscope -- ${site.executable} mcp`,
+  },
 ];
 
 export const providers: { name: string; plan?: string; logo: LogoName }[] = [
   { name: 'Anthropic', plan: 'Claude', logo: 'anthropic' },
   { name: 'OpenAI', plan: 'ChatGPT', logo: 'openai' },
   { name: 'xAI', plan: 'SuperGrok', logo: 'xai' },
+  { name: 'Google AI', logo: 'google' },
   { name: 'OpenCode Go', logo: 'opencode' },
   { name: 'OpenRouter', logo: 'openrouter' },
 ];
@@ -45,10 +50,6 @@ export const providers: { name: string; plan?: string; logo: LogoName }[] = [
 export const mcpTools: Feature[] = [
   { title: 'check_limits', text: 'Whether planned work fits, and which account has room.' },
   { title: 'explain_usage', text: 'What used a limit, or what it cost.' },
-  { title: 'find_sessions', text: 'Search past sessions by text, folder, agent or time.' },
-  { title: 'handoff', text: 'What another agent needs to finish a session.' },
-  { title: 'read_session', text: 'Read a session page by page, or just what failed.' },
-  { title: 'continue', tag: 'prompt', text: 'Start a new session from the last one’s handoff.' },
 ];
 
 export const statusLineSetups: Setup[] = [
@@ -83,7 +84,7 @@ export const cliCommands = [
   { command: 'turnscope status', does: 'every limit, forecast and hour of work left' },
   { command: 'turnscope status --hours 3', does: 'whether 3 more hours of work fit' },
   { command: 'turnscope usage --by model', does: 'the last 30 days by model' },
-  { command: 'turnscope sessions --since today', does: 'today’s sessions' },
+  { command: 'turnscope usage --limit week', does: 'what used your weekly limit' },
   { command: 'turnscope doctor', does: 'what can’t be read, and how to fix it' },
 ];
 

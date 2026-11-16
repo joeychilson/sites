@@ -87,17 +87,43 @@ function Home() {
         id="agents"
         layout="text-left"
         title="Your agents can check too"
-        description="Turnscope is also an MCP server, so agents can check their limits before a big job. Its tools only read."
+        description="Turnscope is also an MCP server, so an agent can check its limits before a big job and say what used them. Its tools only read."
         aside={
-          <p className="mt-5">
-            <a href={`${site.repo}/blob/main/docs/mcp.md`} className={docsLink}>
-              MCP docs
-            </a>
-          </p>
+          <>
+            <div className="mt-9">
+              <FeatureList features={mcpTools} layout="one" titlesAreCode />
+            </div>
+            <p className="mt-7">
+              <a href={`${site.repo}/blob/main/docs/mcp.md`} className={docsLink}>
+                MCP docs
+              </a>
+            </p>
+          </>
         }
       >
-        <FeatureList features={mcpTools} layout="two" titlesAreCode />
-        <div className="mt-12">
+        <Terminal title="app — codex">
+          <Turn mark="›" kind="asked">
+            Claude Max is almost out. What used it?
+          </Turn>
+          <Turn mark="•">
+            Called <strong>turnscope.explain_usage</strong>
+            {/* On a phone, the call breaks before its arguments. */}
+            <wbr />({'{"account":"claude"}'})
+          </Turn>
+          <Turn mark="└" kind="output">
+            Usage of Claude Max (me@example.com) since 05:00 (2h ago): $36.00 at list prices over
+            412 responses.
+            <br />5 hours: 28% left, resets 10:00 (in 3h). At this pace it runs out 08:00 (in 1h),
+            as soon as 07:40. About 1h 10m of work left (40m–2h 10m), at 24% an hour of work.
+            <br />
+            <span className="text-ink-faint">… +10 lines</span>
+          </Turn>
+          <Turn mark="•">
+            “Fix the parser” used the most: 32% of the 5-hour limit, $16.00 at list prices. “Write
+            the release notes” used 9%.
+          </Turn>
+        </Terminal>
+        <div className="mt-10">
           <p className="body-text">Connect in Settings → Agents, or run:</p>
           <div className="mt-5">
             <CommandTabs
@@ -110,45 +136,8 @@ function Home() {
       </Section>
 
       <Section
-        id="handoff"
-        layout="text-right"
-        title="Hand off to another agent"
-        description="When a limit runs out mid-task, another agent can pick up the work. Turnscope builds the handoff from the session files, without calling a model."
-        aside={
-          <p className="mt-5 body-text">
-            Use the <code className={code}>handoff</code> tool, the{' '}
-            <code className={code}>continue</code> prompt or{' '}
-            <code className={code}>turnscope handoff</code>.
-          </p>
-        }
-      >
-        <Terminal title="app — codex">
-          <Turn mark="›" kind="asked">
-            Claude Code ran out. Pick up its work on the parser.
-          </Turn>
-          <Turn mark="•">
-            Called <strong>turnscope.handoff</strong>({'{}'})
-          </Turn>
-          <Turn mark="└" kind="output">
-            # Handoff: Fix the parser
-            <br />
-            <br />
-            Claude Code session `claude-code:0f6e3f6a-713c-4d1e-9a6b-2b8c1d4e5f60` in `/work/app` on
-            branch `main`, last active 08:01 (4m ago), 52 entries. Times are local; it's now Thu Oct
-            8 08:05.
-            <br />
-            <span className="text-ink-faint">… +71 lines</span>
-          </Turn>
-          <Turn mark="•">
-            Claude Code fixed nested tables and wrote two of the four test files. The third fails on
-            inline tables, so I'll start there.
-          </Turn>
-        </Terminal>
-      </Section>
-
-      <Section
         id="status-line"
-        layout="text-left"
+        layout="text-right"
         title="A status line and a guard"
         description={
           <>
@@ -166,7 +155,7 @@ function Home() {
 
       <Section
         id="cli"
-        layout="text-right"
+        layout="text-left"
         title="The command line"
         description={
           <>
