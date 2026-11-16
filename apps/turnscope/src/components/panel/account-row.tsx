@@ -64,11 +64,7 @@ export function AccountRow({
               </span>
               {account.usedMost.sessions.map((session) => (
                 <span key={session.title} className="flex flex-col gap-px">
-                  <span className="flex items-center gap-[5px] text-[12px]/[15px]">
-                    {session.title}
-                    <span aria-hidden="true" className="size-1.5 rounded-full bg-active" />
-                    <span className="sr-only">Active now</span>
-                  </span>
+                  <span className="text-[12px]/[15px]">{session.title}</span>
                   <span className="text-label-secondary tabular-nums">{session.used}</span>
                 </span>
               ))}
