@@ -37,5 +37,3 @@ The page mirrors parts of the extension's repo:
 - the bar a hidden post folds into, from `src/content/bar.ts`;
 - the categories, from `src/core/taxonomy.ts`, and the rule for what's hidden, from `judge` in `src/core/policy.ts`;
 - the cost and what's sent, from `README.md` and `PRIVACY.md`.
-
-`site.store` searches the Chrome Web Store for the extension. Swap in the listing's address once it's published.

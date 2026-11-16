@@ -8,8 +8,7 @@ export const site = {
     alt: 'The words “Eats the junk in your X feed” beside a feed where junk posts have folded into slim bars, with a green goblin peeking over its top edge.',
   },
   repo: 'https://github.com/joeychilson/slopgoblin',
-  // A search, which finds the listing once it's published. Swap in the listing's own address then.
-  store: 'https://chromewebstore.google.com/search/Slop%20Goblin',
+  store: 'https://chromewebstore.google.com/detail/slop-goblin/chfckcjkfehffpammliepgeehalndggk',
   apiKey: 'https://aistudio.google.com/apikey',
   author: { name: 'Joey Chilson', href: 'https://joeychilson.com' },
 };
