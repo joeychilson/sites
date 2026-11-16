@@ -2,7 +2,7 @@ export const site = {
   name: 'Joey Chilson',
   origin: 'https://joeychilson.com',
   description:
-    'Joey Chilson builds Turnscope, a Mac app for coding agents, and Railway templates for Postgres, SearXNG, OpenCode and celld.',
+    'Joey Chilson builds Turnscope, a Mac app for coding agents; Slop Goblin, a Chrome extension that hides junk on X; and Railway templates for Postgres, SearXNG, OpenCode and celld.',
   card: { path: '/social-card.png', alt: 'Joey Chilson, above a pixel city at night.' },
   email: 'joeychilson@outlook.com',
   profiles: [
@@ -11,6 +11,7 @@ export const site = {
   ],
   projects: [
     { title: 'Turnscope', note: 'Menu bar app for Mac', href: 'https://turnscope.app' },
+    { title: 'Slop Goblin', note: 'Chrome extension for X', href: 'https://slopgoblin.app' },
     {
       title: 'Railway templates',
       note: 'One-click deploys',
