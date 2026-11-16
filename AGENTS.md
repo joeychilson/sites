@@ -8,14 +8,14 @@ Each app in `apps/` is a TanStack Start app on a Cloudflare Worker. TanStack Sta
 - Import from `src/` as `@/...`, even from the same folder. Only paths outside `src/`, like the posts glob, stay relative.
 - Check data from outside (network responses, files like posts) with zod, and only the parts we use. Trust our own types.
 - Tailwind styles everything we render, with classes in the markup. Each app's `src/styles/app.css` holds its `@theme`, its few `@utility` rules, and only what classes can't reach, like the HTML TanStack Markdown and TanStack Highlight write (joeychilson's `prose.css`). A `style` prop only carries a value worked out per element, like a measured position or a bar's width.
-- Colors, type and easing come from the app's `@theme`, which clears Tailwind's palette. Literal colors are only for drawings like the skyline or turnscope's Mac screen. Both apps set font sizes in px: joeychilson on its pixel grid, turnscope to match the Mac app.
+- Colors, type and easing come from the app's `@theme`, which clears Tailwind's palette. Literal colors are only for drawings like the skyline, turnscope's Mac screen or slopgoblin's goblin. Every app sets font sizes in px: joeychilson on its pixel grid, turnscope to match the Mac app, slopgoblin to match the extension's side panel.
 - Turnscope's mock of the app follows `macos/Turnscope/Style.swift` in the Turnscope repo: its colors, its one spring and its timings.
 - Motion stops under reduced motion: `motion-safe:` or `motion-reduce:` on classes, a media query in CSS.
-- Animate a component's changes with CSS transitions, or turnscope's `use-height-transition.ts` for heights. Don't use React's `<ViewTransition>` for this, because it snapshots the whole page. Navigating between pages, and joeychilson's day and night switch, use view transitions on purpose.
+- Animate a component's changes with CSS transitions, or turnscope's `use-height-transition.ts` for heights (slopgoblin's `fold.tsx` transitions grid rows instead). Don't use React's `<ViewTransition>` for this, because it snapshots the whole page. Navigating between pages, and joeychilson's day and night switch, use view transitions on purpose.
 - `src/routeTree.gen.ts` is generated and committed. `vp dev`, `vp build` and `vp test` rewrite it, so run one after adding a route.
 - Run apps with `vp dev` and `vp build`, never `cf dev` or `cf build`, which reach for plain Vite.
 
-Before you finish, run this from the repo root. It generates binding types, builds both apps, then runs `vp check` and every test:
+Before you finish, run this from the repo root. It generates binding types, builds every app, then runs `vp check` and every test:
 
 ```sh
 vp run ready

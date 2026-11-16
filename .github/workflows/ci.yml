@@ -38,7 +38,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        app: [joeychilson, turnscope]
+        app: [joeychilson, slopgoblin, turnscope]
     steps:
       - uses: actions/checkout@v7.0.1
         with:

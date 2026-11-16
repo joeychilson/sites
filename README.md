@@ -1,11 +1,12 @@
 # sites
 
-The source for two websites.
+The source for three websites.
 
-| Site                                       | What it is                 | Source                                 |
-| ------------------------------------------ | -------------------------- | -------------------------------------- |
-| [joeychilson.com](https://joeychilson.com) | Home page and writing      | [`apps/joeychilson`](apps/joeychilson) |
-| [turnscope.app](https://turnscope.app)     | Landing page for Turnscope | [`apps/turnscope`](apps/turnscope)     |
+| Site                                       | What it is                   | Source                                 |
+| ------------------------------------------ | ---------------------------- | -------------------------------------- |
+| [joeychilson.com](https://joeychilson.com) | Home page and writing        | [`apps/joeychilson`](apps/joeychilson) |
+| [slopgoblin.app](https://slopgoblin.app)   | Landing page for Slop Goblin | [`apps/slopgoblin`](apps/slopgoblin)   |
+| [turnscope.app](https://turnscope.app)     | Landing page for Turnscope   | [`apps/turnscope`](apps/turnscope)     |
 
 ## Stack
 
@@ -24,6 +25,7 @@ You need Node.js 24.22 or later, pnpm and Vite+.
 pnpm install
 pnpm --filter joeychilson dev   # http://localhost:5173
 pnpm --filter turnscope dev     # http://localhost:5174
+pnpm --filter slopgoblin dev    # http://localhost:5175
 ```
 
 Before you commit:
@@ -50,6 +52,7 @@ joeychilson.dev is on the joeychilson Worker so it keeps its DNS record, and a C
 
 ```
 apps/joeychilson/           joeychilson.com
+apps/slopgoblin/            slopgoblin.app
 apps/turnscope/             turnscope.app
 .github/workflows/ci.yml    checks and deploys
 AGENTS.md                   instructions for coding agents

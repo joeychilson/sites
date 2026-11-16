@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite-plus';
 
-const apps = ['joeychilson', 'turnscope'];
+const apps = ['joeychilson', 'slopgoblin', 'turnscope'];
 
 export default defineConfig({
   staged: {
