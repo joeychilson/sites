@@ -94,6 +94,10 @@ export const privacy: Feature[] = [
     text: 'Each login goes only to its own provider. API keys are kept as fingerprints.',
   },
   {
+    title: 'No session text kept',
+    text: 'Of what’s said in a session, it keeps only the title.',
+  },
+  {
     title: 'No telemetry',
     text: 'Besides your providers, it only talks to models.dev for prices and GitHub for updates.',
   },

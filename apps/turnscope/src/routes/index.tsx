@@ -180,7 +180,7 @@ function Home() {
         title="Your history stays on your Mac"
         description="Turnscope only reads. The one change it makes is adding its MCP server to an agent, when you ask."
       >
-        <FeatureList features={privacy} layout="three" />
+        <FeatureList features={privacy} layout="four" />
       </Section>
 
       <section

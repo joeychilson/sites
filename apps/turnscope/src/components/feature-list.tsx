@@ -2,7 +2,7 @@ import type { Feature } from '@/lib/content';
 
 const columns = {
   one: 'gap-y-6',
-  three: 'gap-x-10 gap-y-9 sm:grid-cols-2 lg:grid-cols-3',
+  four: 'gap-x-10 gap-y-9 sm:grid-cols-2 lg:grid-cols-4',
 };
 
 export function FeatureList({
