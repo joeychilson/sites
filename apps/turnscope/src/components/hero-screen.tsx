@@ -75,10 +75,8 @@ export function HeroScreen() {
               <strong>turnscope - check_limits</strong> (MCP)(hours: 2)
             </Turn>
             <Turn mark="⎿" kind="output">
-              2 more hours of work don't fit: 5 hours runs out after about 1h 10m of work.
-              <br />
-              Claude Max (me@example.com): about 1h 10m of work left (40m–2h 10m) before 5 hours
-              runs out; it resets 10:00 (in 3h).
+              Claude Max (me@example.com): 2 more hours of work don't fit: 5 hours runs out after
+              about 1h 10m of work (40m–2h 10m); it resets 10:00 (in 3h).
               <br />
               <span className="text-ink-faint">… +5 lines (ctrl+o to expand)</span>
             </Turn>
