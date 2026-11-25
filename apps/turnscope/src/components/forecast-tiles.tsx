@@ -24,7 +24,7 @@ export function ForecastTiles() {
           <span className="text-[40px]/[1.1] font-semibold tracking-[-0.03em] tabular-nums">
             1h 10m
           </span>
-          <span className="text-label-secondary">of work left · 40m–2h 10m</span>
+          <span className="text-label-secondary">of work left · 30m or more</span>
         </span>
       </Tile>
       <Tile title="What used it" text="Usage and cost by session, project, model or agent.">

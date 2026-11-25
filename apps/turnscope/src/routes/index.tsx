@@ -114,7 +114,7 @@ function Home() {
             Usage of Claude Max (me@example.com) since 05:00 (2h ago): $36.00 at list prices over
             412 responses.
             <br />5 hours: 28% left, resets 10:00 (in 3h). At this pace it runs out 08:00 (in 1h),
-            as soon as 07:40. About 1h 10m of work left (40m–2h 10m), at 24% an hour of work.
+            as soon as 07:30. About 1h 10m of work left (30m or more), at 24% an hour of work.
             <br />
             <span className="text-ink-faint">… +10 lines</span>
           </Turn>
